@@ -1,4 +1,4 @@
-{docsify-update}
+{docsify-updated}
 
 # 测试
 

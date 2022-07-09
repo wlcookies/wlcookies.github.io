@@ -2,7 +2,7 @@
 
 <img width="180px" style="border-radius: 50%" bor src="https://portrait.gitee.com/uploads/avatars/user/2653/7961473_wlcookies_1597990066.png!avatar200">
 
-# docsify <small>3.5</small>
+# 博客 <small>:boom:</small>
 
 > A magical documentation site generator.
 

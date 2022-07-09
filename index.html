@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>博客</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="description" content="Description" />
     <meta
@@ -14,30 +14,34 @@
       href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
     /> -->
     <!-- Theme: Simple (latest v0.x.x) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css"
+    />
     <!-- Theme: Defaults -->
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css"> -->
     <style>
-      /* :root { */
-        /* Reduce the font size */
-        /* --base-font-size: 14px; */
-    
-        /* Change the theme color hue */
-        /* --theme-hue: 1; */
-    
-        /* Change the sidebar bullets */
-        /* --sidebar-nav-link-before-content: '😀'; */
-      /* } */
+      :root {
+        --code-block-padding: 1em 1em 1em 1em;
+        --heading-color: hsl(204, 90%, 45%);
+        --cover-heading-color: hsl(204, 90%, 45%);
+        --copycode-background: #808080;
+        --copycode-color: #fff;
+      }
     </style>
-    
   </head>
   <body>
     <div data-app id="app"></div>
     <script>
+      const formatNumber = (n) => {
+        n = n.toString();
+        return n[1] ? n : `0${n}`;
+      };
+
       window.$docsify = {
         themeable: {
-          readyTransition : true, // default
-          responsiveTables: true  // default
+          readyTransition: true,
+          responsiveTables: true,
         },
         // logo: 'https://portrait.gitee.com/uploads/avatars/user/2653/7961473_wlcookies_1597990066.png!avatar200',
         auto2top: true,
@@ -46,13 +50,64 @@
         name: "技术分享",
         repo: "",
         onlyCover: false,
-        count:{countable:true,fontsize:'0.9em',color:'rgb(90,90,90)',language:'chinese' },
+        count: {
+          countable: true,
+          fontsize: "0.9em",
+          color: "rgb(90,90,90)",
+          language: "chinese",
+        },
         loadSidebar: true,
         // autoHeader: true,
         subMaxLevel: 2,
-        formatUpdated: '{MM}/{DD} {HH}:{mm}',
-        formatUpdated: function(time) { //  {docsify-update}
-          return time;
+        formatUpdated: function (time) {
+          const date = new Date(time);
+          const year = date.getFullYear();
+          const month = date.getMonth() + 1;
+          const day = date.getDate();
+          const hour = date.getHours();
+          const minute = date.getMinutes();
+          const second = date.getSeconds();
+          return `${[year, month, day].map(formatNumber).join("-")} ${[
+            hour,
+            minute
+          ]
+            .map(formatNumber)
+            .join(":")}`;
+        },
+        pagination: {
+          previousText: "上一章节",
+          nextText: "下一章节",
+          crossChapter: true,
+          crossChapterText: true,
+        },
+        "flexible-alerts": {
+          style: "flat",
+        },
+        "flexible-alerts": {
+          note: {
+            label: "备忘",
+          },
+          tip: {
+            label: "提示",
+          },
+          warning: {
+            label: "注意",
+          },
+          attention: {
+            label: "警告",
+          },
+        },
+        copyCode: {
+          buttonText: "点击复制",
+          errorText: "错误",
+          successText: "复制成功",
+        },
+        footer: {
+          copy: "……",
+          auth: " ",
+          pre: " ",
+          style: "text-align: right;",
+          class: "className",
         },
         // alias: {
         //   '/.*/_sidebar.md': '/_sidebar.md'
@@ -63,6 +118,8 @@
     <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
     <!-- Docsify v4 -->
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <!-- docsify-tabs (latest v1.x.x) -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
     <!-- 图片缩小 -->
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
     <!-- 复制粘贴 -->
@@ -75,5 +132,19 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/components/prism-javascript.min.js"></script>
     <!-- 表情 -->
     <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
+
+    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <!-- UML -->
+    <script src="//unpkg.com/docsify-plantuml/dist/docsify-plantuml.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/docsify-example-panels"></script>
+
+    <script src="https://unpkg.com/docsify-plugin-flexible-alerts"></script>
+
+    <script src="//unpkg.com/docsify-glossary/dist/docsify-glossary.min.js"></script>
+
+    <script src="//unpkg.com/docsify-footer-enh/dist/docsify-footer-enh.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/@sujaykumarh/docsify-plugin-title@1.x/dist/plugin.min.js"></script>
   </body>
 </html>
